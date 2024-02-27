@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class setLocale
+class SetLocale
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class setLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-     
+
         $locale = session('locale', config('app.locale'));
         $direction = $locale == 'ar' ? 'rtl' : 'ltr';
 
@@ -23,6 +23,6 @@ class setLocale
         session(['direction' => $direction]);
 
         return $next($request);
-    
+
     }
 }
